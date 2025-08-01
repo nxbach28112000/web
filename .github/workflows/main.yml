@@ -30,7 +30,7 @@ jobs:
       - name: Build Web
         run: flutter build web
 
-      - run: flutter build web --base-href="/myweb/"
+      - run: flutter build web --base-href="/web/"
 
       - name: Setup Git Config
         run: |
