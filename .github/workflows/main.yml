@@ -26,8 +26,17 @@ jobs:
       - name: Build Web
         run: flutter build web
 
+      - run: flutter build web --base-href="web"
+
+      - name: Setup Git Config
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
           publish_dir: build/web
+          force_orphan: true
